@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+            Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<configuration>
+    <property>
+        <name>ozone.om.ratis.enable</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>ozone.om.service.ids</name>
+        <value>cluster1</value>
+    </property>
+
+    <property>
+        <name>ozone.om.nodes.cluster1</name>
+        <value>om1,om2,om3</value>
+    </property>
+
+    <property>
+        <name>ozone.om.address.cluster1.om1</name>
+        <value>tg-local-bdworker-1.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.om.address.cluster1.om2</name>
+        <value>tg-local-bdworker-2.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.om.address.cluster1.om3</name>
+        <value>tg-local-bdworker-3.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.ratis.enable</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.default.service.id</name>
+        <value>cluster1</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.service.ids</name>
+        <value>cluster1</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.nodes.cluster1</name>
+        <value>scm1,scm2,scm3</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.address.cluster1.scm1</name>
+        <value>tg-local-bdworker-1.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.address.cluster1.scm2</name>
+        <value>tg-local-bdworker-2.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.address.cluster1.scm3</name>
+        <value>tg-local-bdworker-3.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.primordial.node.id</name>
+        <value>tg-local-bdworker-1.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.metadata.dirs</name>
+        <value>/data/ozone/ozone-metadata</value>
+    </property>
+
+    <property>
+        <name>ozone.om.db.dirs</name>
+        <value>/data/ozone/om-db/data</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.db.dirs</name>
+        <value>/data/ozone/scm-db/data</value>
+    </property>
+
+    <property>
+        <name>dfs.container.ratis.datanode.storage.dir</name>
+        <value>/data/ozone/datanode/ratis/data</value>
+    </property>
+
+    <property>
+        <name>hdds.datanode.dir</name>
+        <value>/data/ozone/hdds</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.datanode.id.dir</name>
+        <value>/data/ozone/datanode</value>
+    </property>
+
+    <property>
+        <name>ozone.metastore.rocksdb.statistics</name>
+        <value>OFF</value>
+    </property>
+
+    <property>
+        <name>ozone.datanode.pipeline.limit</name>
+        <value>20</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.pipeline.creation.auto.factor.one</name>
+        <value>false</value>
+        <tag>OZONE, SCM, PIPELINE</tag>
+        <description>
+            If enabled, SCM will auto create RATIS factor ONE pipeline.
+        </description>
+    </property>
+
+    <!--
+            <property>
+     <name>ozone.scm.pipeline.owner.container.count</name>
+     <value>6</value>
+     <tag>OZONE, SCM, PIPELINE</tag>
+     <description>Number of containers per owner per disk in a pipeline.
+     </description>
+   </property>
+   -->
+    <property>
+        <name>ozone.scm.client.address</name>
+        <value>tg-local-bdworker-1.tg.mt.com,tg-local-bdworker-2.tg.mt.com,tg-local-bdworker-3.tg.mt.com</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.names</name>
+        <value>tg-local-bdworker-1.tg.mt.com,tg-local-bdworker-2.tg.mt.com,tg-local-bdworker-3.tg.mt.com</value>
+        <description>
+            This property allows datanodes to discover where SCM is, so that
+            datanodes can send heartbeat to SCM.
+        </description>
+    </property>
+
+
+    <!--This feature is strongly recommended to be turned ON when Ozone buckets are mainly used via Hadoop compatible interfaces,
+                   especially with high number of files in deep directory hierarchy.
+    -->
+    <!-- 目前 1.2.1 版本存在问题 https://issues.apache.org/jira/browse/HDDS-5664 -->
+    <!--
+                  <property>
+      <name>ozone.om.enable.filesystem.paths</name>
+      <value>true</value>
+    </property>
+    <property>
+      <name>ozone.om.metadata.layout</name>
+      <value>PREFIX</value>
+    </property>
+    -->
+
+    <!-- SCM -->
+    <property>
+        <name>ozone.scm.container.size</name>
+        <value>5GB</value>
+    </property>
+
+    <property>
+        <name>hdds.scm.safemode.min.datanode</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>ozone.replication</name>
+        <value>3</value>
+    </property>
+
+    <property>
+        <name>ozone.om.handler.count.key</name>
+        <value>150</value>
+    </property>
+
+    <property>
+        <name>ozone.scm.handler.count.key</name>
+        <value>150</value>
+    </property>
+
+
+    <!-- Recon Data -->
+    <property>
+        <name>ozone.recon.om.db.dir</name>
+        <value>/data/ozone/recon/om</value>
+    </property>
+
+    <property>
+        <name>ozone.recon.scm.db.dirs</name>
+        <value>/data/ozone/recon/scm</value>
+    </property>
+
+    <!-- Ozone Recon 服务需要依赖于 OM 的 metadata，它采用定期同步 OM metadata db 的方式来做的 -->
+    <property>
+        <name>ozone.om.http-address</name>
+        <value>tg-local-bdworker-1.tg.mt.com:9874</value>
+    </property>
+
+    <property>
+        <name>recon.om.snapshot.task.interval.delay</name>
+        <value>10m</value>
+    </property>
+
+    <property>
+        <name>ozone.recon.http-address</name>
+        <value>tg-local-bdworker-2.tg.mt.com:19888</value>
+    </property>
+
+    <property>
+        <name>ozone.recon.address</name>
+        <value>tg-local-bdworker-2.tg.mt.com:9891</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hadoop.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hadoop.groups</name>
+        <value>*</value>
+    </property>
+
+    <!--
+           <property>
+     <name>ozone.om.enable.filesystem.paths</name>
+     <value>true</value>
+    </property>
+
+    <property>
+     <name>ozone.om.metadata.layout</name>
+     <value>PREFIX</value>
+    </property>
+    -->
+    <property>
+        <name>ozone.open.key.cleanup.service.interval.seconds</name>
+        <value>300</value>
+        <tag>OZONE, OM, PERFORMANCE</tag>
+        <description>
+            A background job periodically checks open key entries and delete the expired ones. This entry controls the
+            interval of this cleanup check.
+        </description>
+    </property>
+
+    <property>
+        <name>ozone.security.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hdds.block.token.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>ozone.acl.enabled</name>
+        <value>true</value>
+    </property>
+
+    <!--
+    <property>
+      <name>ozone.acl.authorizer.class</name>
+      <value>org.apache.hadoop.ozone.security.acl.OzoneNativeAuthorizer</value>
+    </property>
+    -->
+
+    <property>
+        <name>ozone.acl.authorizer.class</name>
+        <value>org.apache.ranger.authorization.ozone.authorizer.RangerOzoneAuthorizer</value>
+    </property>
+
+    <property>
+        <name>ozone.administrators</name>
+        <value>om,scm,hive,hive/tg-local-bdworker-1.tg.mt.com@TG.MT.COM,om@TG.MT.COM,scm@TG.MT.COM</value>
+    </property>
+
+    <property>
+        <name>hdds.container.token.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>ozone.security.http.kerberos.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>ozone.http.filter.initializers</name>
+        <value>org.apache.hadoop.security.AuthenticationFilterInitializer</value>
+    </property>
+
+    <property>
+        <name>hdds.scm.kerberos.principal</name>
+        <value>scm/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>hdds.scm.kerberos.keytab.file</name>
+        <value>/opt/hadoop/scm.keytab</value>
+    </property>
+
+    <property>
+        <name>ozone.om.kerberos.principal</name>
+        <value>om/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>ozone.om.kerberos.keytab.file</name>
+        <value>/opt/hadoop/om.keytab</value>
+    </property>
+
+    <property>
+        <name>ozone.recon.kerberos.principal</name>
+        <value>recon/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>ozone.recon.kerberos.keytab.file</name>
+        <value>/opt/hadoop/recon.keytab</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.kerberos.principal</name>
+        <value>dn/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>dfs.datanode.keytab.file</name>
+        <value>/opt/hadoop/dn.keytab</value>
+    </property>
+
+    <property>
+        <name>ozone.om.http.auth.type</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hdds.scm.http.auth.type</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hdds.datanode.http.auth.type</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>ozone.recon.http.auth.type</name>
+        <value>kerberos</value>
+    </property>
+    <!--
+    <property>
+      <name>ozone.recon.http.auth.type</name>
+      <value>simple</value>
+    </property>
+    -->
+
+    <property>
+        <name>hdds.scm.http.auth.kerberos.principal</name>
+        <value>HTTP/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>hdds.scm.http.auth.kerberos.keytab</name>
+        <value>/opt/hadoop/http.keytab</value>
+    </property>
+    <property>
+        <name>ozone.om.http.auth.kerberos.principal</name>
+        <value>HTTP/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>ozone.om.http.auth.kerberos.keytab</name>
+        <value>/opt/hadoop/http.keytab</value>
+    </property>
+    <property>
+        <name>hdds.datanode.http.auth.kerberos.principal</name>
+        <value>HTTP/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>hdds.datanode.http.auth.kerberos.keytab</name>
+        <value>/opt/hadoop/http.keytab</value>
+    </property>
+    <property>
+        <name>ozone.recon.http.auth.kerberos.principal</name>
+        <value>HTTP/_HOST@TG.MT.COM</value>
+    </property>
+    <property>
+        <name>ozone.recon.http.auth.kerberos.keytab</name>
+        <value>/opt/hadoop/http.keytab</value>
+    </property>
+
+</configuration>

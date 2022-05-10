@@ -1,8 +1,8 @@
 FROM openjdk:8-slim
 LABEL maintainer="Amom Mendes"
-LABEL hive-metastore-version="3.0.0"
+LABEL hive-metastore-version="3.1.2"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-ARG HADOOP_VERSION=3.2.0
+ARG HADOOP_VERSION=3.2.2
 
 RUN apt-get update && \
     apt-get install -y curl=7.64.0-4+deb10u1 --no-install-recommends && \
@@ -44,7 +44,11 @@ RUN curl -s https://jdbc.postgresql.org/download/postgresql-42.2.16.jar -o postg
 RUN cp /opt/postgresql-jdbc.jar  ${HADOOP_HOME}/share/hadoop/common/lib/ && chmod -R 775 ${HADOOP_HOME}/share/hadoop/common/lib/*
 RUN cp /opt/postgresql-jdbc.jar ${METASTORE_HOME}/lib/ && chmod -R 775 ${METASTORE_HOME}/lib/*
 
+COPY core-site.xml ${METASTORE_HOME}/conf/
+COPY ozone-site.xml ${METASTORE_HOME}/conf/
+COPY ozone-filesystem-hadoop3-1.2.1.jar ${METASTORE_HOME}/lib/
 COPY entrypoint.sh ${METASTORE_HOME}/bin/
+
 RUN chmod 775 ${METASTORE_HOME}/bin/entrypoint.sh
 
 # Metastore URI Port
